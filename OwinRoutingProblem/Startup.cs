@@ -5,10 +5,8 @@ using OwinRoutingProblem;
 namespace OwinRoutingProblem
 {
     using System.Web.Http;
-    using Microsoft.Owin;
+    using Html5;
     using Microsoft.Owin.Extensions;
-    using Microsoft.Owin.FileSystems;
-    using Microsoft.Owin.StaticFiles;
     using Owin;
 
     public class Startup
@@ -29,13 +27,7 @@ namespace OwinRoutingProblem
 
             app.UseWebApi(httpConfiguration);
 
-            // Make ./public the default root of the static files in our Web Application.
-            app.UseFileServer(new FileServerOptions
-            {
-                RequestPath = new PathString(string.Empty),
-                FileSystem = new PhysicalFileSystem("./public"),
-                EnableDirectoryBrowsing = true,
-            });
+            app.UseHtml5Mode("dist", "/index.html");
 
             app.UseStageMarker(PipelineStage.MapHandler);
         }
