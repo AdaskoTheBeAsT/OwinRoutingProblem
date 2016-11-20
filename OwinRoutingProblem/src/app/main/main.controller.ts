@@ -18,7 +18,7 @@ export class MainController {
   }
 
   /** @ngInject */
-  activate($timeout: angular.ITimeoutService) {
+  activate($timeout: angular.ITimeoutService): void {
     this.getWebDevTec();
 
     $timeout(() => {
@@ -26,12 +26,12 @@ export class MainController {
     }, 4000);
   }
 
-  showToastr() {
+  showToastr(): void {
     this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
     this.classAnimation = '';
   }
 
-  getWebDevTec() {
+  getWebDevTec(): void {
     this.awesomeThings = this.webDevTec.tec;
   }
 }

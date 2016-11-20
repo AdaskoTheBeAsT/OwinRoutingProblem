@@ -1,5 +1,5 @@
 /** @ngInject */
-export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
+export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider): void {
   $stateProvider
     .state('home', {
       url: '/',

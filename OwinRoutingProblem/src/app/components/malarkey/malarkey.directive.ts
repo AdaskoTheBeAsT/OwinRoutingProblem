@@ -20,9 +20,9 @@ export function acmeMalarkey(malarkey: any): angular.IDirective {
 
 }
 
-function linkFunc(scope: IProjectsScope, el: JQuery, attr: any, vm: MalarkeyController) {
-  var watcher;
-  var typist = vm.malarkey(el[0], {
+function linkFunc(scope: IProjectsScope, el: JQuery, attr: any, vm: MalarkeyController): void {
+  var watcher: () => void;
+  var typist: any = vm.malarkey(el[0], {
     typeSpeed: 40,
     deleteSpeed: 40,
     pauseDelay: 800,
@@ -32,17 +32,17 @@ function linkFunc(scope: IProjectsScope, el: JQuery, attr: any, vm: MalarkeyCont
 
   el.addClass('acme-malarkey');
 
-  angular.forEach(scope.extraValues, function(value: string) {
+  angular.forEach(scope.extraValues, function(value: string): void {
     typist.type(value).pause().delete();
   });
 
-  watcher = scope.$watch('vm.contributors', function(current: IContributor, original: IContributor) {
-    angular.forEach(vm.contributors, function(contributor: IContributor) {
+  watcher = scope.$watch('vm.contributors', function(current: IContributor, original: IContributor): void {
+    angular.forEach(vm.contributors, function(contributor: IContributor): void {
       typist.type(contributor.login).pause().delete();
     });
   });
 
-  scope.$on('$destroy', function () {
+  scope.$on('$destroy', function (): void {
     watcher();
   });
 }
@@ -63,14 +63,14 @@ export class MalarkeyController {
     this.activate();
   }
 
-  activate() {
+  activate(): ng.IPromise<void> {
     return this.getContributors()
       .then(() => {
         this.$log.info('Activated Contributors View');
       });
   }
 
-  getContributors() {
+  getContributors(): ng.IPromise<any[]> {
     return this.githubContributor.getContributors(10)
       .then((data: any) => {
         this.contributors = data;

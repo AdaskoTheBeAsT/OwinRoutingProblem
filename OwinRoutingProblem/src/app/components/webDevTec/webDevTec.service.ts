@@ -15,7 +15,7 @@ export class WebDevTecService {
 
   /** @ngInject */
   constructor () {
-    var rawData = [
+    var rawData: any = [
       {
         'title': 'AngularJS',
         'url': 'https://angularjs.org/',
