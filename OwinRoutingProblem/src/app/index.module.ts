@@ -4,6 +4,8 @@ import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
+import { ContactController } from './contact/contact.controller';
+import { AboutController } from './about/about.controller';
 import { GithubContributor } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
@@ -24,6 +26,8 @@ module owinRoutingProblem {
     .service('githubContributor', GithubContributor)
     .service('webDevTec', WebDevTecService)
     .controller('MainController', MainController)
+    .controller('ContactController', ContactController)
+    .controller('AboutController', AboutController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey);
 }
