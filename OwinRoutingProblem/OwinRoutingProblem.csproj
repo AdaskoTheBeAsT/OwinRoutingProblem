@@ -120,7 +120,6 @@
     <Content Include="karma.conf.js" />
     <Content Include="packages.config" />
     <Content Include="protractor.conf.js" />
-    <Content Include="Readme.md" />
     <Content Include="e2e\.eslintrc" />
     <Content Include="gulp\.eslintrc" />
     <Content Include="src\app\about\about.html" />
