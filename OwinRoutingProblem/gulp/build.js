@@ -104,4 +104,4 @@ gulp.task('clean', function () {
   return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/partials'), path.join(conf.paths.tmp, '/serve')]);
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'other']);
+gulp.task('build', ['cleanvs', 'html', 'images', 'fonts', 'other']);
