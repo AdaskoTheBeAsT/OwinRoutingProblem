@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -24,6 +25,7 @@
     </NuGetPackageImportStamp>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -96,8 +98,39 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="e2e\main.po.js" />
+    <Content Include="e2e\main.spec.js" />
+    <Content Include="gulpfile.js" />
+    <Content Include="gulp\build.js" />
+    <Content Include="gulp\conf.js" />
+    <Content Include="gulp\dev.js" />
+    <Content Include="gulp\e2e-tests.js" />
+    <Content Include="gulp\inject.js" />
+    <Content Include="gulp\scripts.js" />
+    <Content Include="gulp\server.js" />
+    <Content Include="gulp\styles.js" />
+    <Content Include="gulp\unit-tests.js" />
+    <Content Include="gulp\vsts.js" />
+    <Content Include="gulp\watch.js" />
+    <Content Include="karma.conf.js" />
     <Content Include="packages.config" />
+    <Content Include="protractor.conf.js" />
     <Content Include="Readme.md" />
+    <Content Include="e2e\.eslintrc" />
+    <Content Include="gulp\.eslintrc" />
+    <Content Include="src\app\components\malarkey\malarkey.scss" />
+    <Content Include="src\app\components\navbar\navbar.scss" />
+    <Content Include="src\app\index.scss" />
+    <Content Include=".bowerrc" />
+    <Content Include=".editorconfig" />
+    <Content Include=".eslintrc" />
+    <Content Include=".yo-rc.json" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
+    <Content Include="typings.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,6 +139,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\**\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\components\navbar\navbar.html" />
+    <Content Include="src\app\main\main.html" />
+    <Content Include="src\assets\images\angular.png" />
+    <Content Include="src\assets\images\bootstrap.png" />
+    <Content Include="src\assets\images\browsersync.png" />
+    <Content Include="src\assets\images\gulp.png" />
+    <Content Include="src\assets\images\jasmine.png" />
+    <Content Include="src\assets\images\karma.png" />
+    <Content Include="src\assets\images\node-sass.png" />
+    <Content Include="src\assets\images\protractor.png" />
+    <Content Include="src\assets\images\typescript.png" />
+    <Content Include="src\assets\images\ui-bootstrap.png" />
+    <Content Include="src\assets\images\yeoman.png" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -134,11 +185,31 @@
     <Analyzer Include="..\packages\System.Security.Cryptography.Hashing.Algorithms.Analyzers.1.1.0\analyzers\dotnet\cs\System.Security.Cryptography.Hashing.Algorithms.Analyzers.dll" />
     <Analyzer Include="..\packages\System.Security.Cryptography.Hashing.Algorithms.Analyzers.1.1.0\analyzers\dotnet\cs\System.Security.Cryptography.Hashing.Algorithms.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\components\githubContributor\githubContributor.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\githubContributor\githubContributor.service.ts" />
+    <TypeScriptCompile Include="src\app\components\malarkey\malarkey.directive.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\malarkey\malarkey.directive.ts" />
+    <TypeScriptCompile Include="src\app\components\navbar\navbar.directive.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\navbar\navbar.directive.ts" />
+    <TypeScriptCompile Include="src\app\components\webDevTec\webDevTec.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\webDevTec\webDevTec.service.ts" />
+    <TypeScriptCompile Include="src\app\index.config.ts" />
+    <TypeScriptCompile Include="src\app\index.module.ts" />
+    <TypeScriptCompile Include="src\app\index.route.ts" />
+    <TypeScriptCompile Include="src\app\index.run.ts" />
+    <TypeScriptCompile Include="src\app\main\main.controller.spec.ts" />
+    <TypeScriptCompile Include="src\app\main\main.controller.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
