@@ -4,12 +4,17 @@
  */
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
+@import '../../bower_components/bootswatch/cerulean/variables';
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies
  */
 // bower:scss
 // endbower
+@import '../../bower_components/bootswatch/cerulean/bootswatch';
+
+$fa-font-path: "../../bower_components/font-awesome/fonts";
+@import "../../bower_components/font-awesome/scss/font-awesome";
 
 .browsehappy {
   margin: 0.2em 0;
