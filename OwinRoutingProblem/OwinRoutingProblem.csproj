@@ -123,8 +123,10 @@
     <Content Include="Readme.md" />
     <Content Include="e2e\.eslintrc" />
     <Content Include="gulp\.eslintrc" />
+    <Content Include="src\app\about\about.html" />
     <Content Include="src\app\components\malarkey\malarkey.scss" />
     <Content Include="src\app\components\navbar\navbar.scss" />
+    <Content Include="src\app\contact\contact.html" />
     <Content Include="src\app\index.scss" />
     <Content Include=".bowerrc" />
     <Content Include=".editorconfig" />
@@ -135,6 +137,8 @@
     <Content Include="tsconfig.json" />
     <Content Include="tslint.json" />
     <Content Include="typings.json" />
+    <Content Include="OwinRoutingProblem.wpp.targets" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,6 +194,7 @@
     <Analyzer Include="..\packages\System.Security.Cryptography.Hashing.Algorithms.Analyzers.1.1.0\analyzers\dotnet\cs\System.Security.Cryptography.Hashing.Algorithms.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\about\about.controller.ts" />
     <TypeScriptCompile Include="src\app\components\githubContributor\githubContributor.service.spec.ts" />
     <TypeScriptCompile Include="src\app\components\githubContributor\githubContributor.service.ts" />
     <TypeScriptCompile Include="src\app\components\malarkey\malarkey.directive.spec.ts" />
@@ -198,6 +203,7 @@
     <TypeScriptCompile Include="src\app\components\navbar\navbar.directive.ts" />
     <TypeScriptCompile Include="src\app\components\webDevTec\webDevTec.service.spec.ts" />
     <TypeScriptCompile Include="src\app\components\webDevTec\webDevTec.service.ts" />
+    <TypeScriptCompile Include="src\app\contact\contact.controller.ts" />
     <TypeScriptCompile Include="src\app\index.config.ts" />
     <TypeScriptCompile Include="src\app\index.module.ts" />
     <TypeScriptCompile Include="src\app\index.route.ts" />
@@ -208,10 +214,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\app\about\" />
-    <Folder Include="src\app\contact\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
