@@ -1,48 +1,58 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require("path");
+const gulp = require("gulp");
+const conf = require("./conf");
 
-var browserSync = require('browser-sync');
-var webpack = require('webpack-stream');
+const browserSync = require("browser-sync");
+const webpack = require("webpack-stream");
 
-var $ = require('gulp-load-plugins')();
+const $ = require("gulp-load-plugins")();
 
 
 function webpackWrapper(watch, test, callback) {
-  var webpackOptions = {
-    resolve: { extensions: ['', '.ts'] },
+  const webpackOptions = {
+    resolve: { extensions: ["", ".ts"] },
     watch: watch,
     module: {
-      preLoaders: [{ test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader'}],
-      loaders: [{ test: /\.ts$/, exclude: /node_modules/, loaders: ['ng-annotate', 'ts-loader']}]
+      preLoaders: [
+        { test: /\.ts$/, exclude: /node_modules/, loader: "tslint-loader" },
+      ],
+      loaders: [
+        {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          loaders: ["ng-annotate", "ts-loader"],
+        },
+      ],
     },
-    output: { filename: 'index.module.js' }
+    output: { filename: "index.module.js" },
   };
 
   if(watch) {
     webpackOptions.devtool = 'inline-source-map';
   }
 
-  var webpackChangeHandler = function(err, stats) {
-    if(err) {
-      conf.errorHandler('Webpack')(err);
+  const webpackChangeHandler = function (err, stats) {
+    if (err) {
+      conf.errorHandler("Webpack")(err);
     }
-    $.util.log(stats.toString({
-      colors: $.util.colors.supportsColor,
-      chunks: false,
-      hash: false,
-      version: false
-    }));
+    $.util.log(
+      stats.toString({
+        colors: $.util.colors.supportsColor,
+        chunks: false,
+        hash: false,
+        version: false,
+      })
+    );
     browserSync.reload();
-    if(watch) {
+    if (watch) {
       watch = false;
       callback();
     }
   };
 
-  var sources = [ path.join(conf.paths.src, '/app/index.module.ts') ];
+  const sources = [path.join(conf.paths.src, "/app/index.module.ts")];
   if (test) {
     sources.push(path.join(conf.paths.src, '/app/**/*.spec.ts'));
   }

@@ -1,22 +1,18 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require("path");
+const gulp = require("gulp");
+const conf = require("./conf");
 
-var karma = require('karma');
+const karma = require("karma");
 
-var pathSrcHtml = [
-  path.join(conf.paths.src, '/**/*.html')
-];
+const pathSrcHtml = [path.join(conf.paths.src, "/**/*.html")];
 
-var pathSrcJs = [
-  path.join(conf.paths.tmp, '/serve/app/index.module.js')
-];
+const pathSrcJs = [path.join(conf.paths.tmp, "/serve/app/index.module.js")];
 
 function runTests (singleRun, done) {
-  var reporters = ['progress'];
-  var preprocessors = {};
+  const reporters = ["progress"];
+  const preprocessors = {};
 
   pathSrcHtml.forEach(function(path) {
     preprocessors[path] = ['ng-html2js'];
@@ -29,17 +25,17 @@ function runTests (singleRun, done) {
     reporters.push('coverage')
   }
 
-  var localConfig = {
-    configFile: path.join(__dirname, '/../karma.conf.js'),
+  const localConfig = {
+    configFile: path.join(__dirname, "/../karma.conf.js"),
     singleRun: singleRun,
     autoWatch: !singleRun,
     reporters: reporters,
-    preprocessors: preprocessors
+    preprocessors: preprocessors,
   };
 
-  var server = new karma.Server(localConfig, function(failCount) {
+  const server = new karma.Server(localConfig, function (failCount) {
     done(failCount ? new Error("Failed " + failCount + " tests.") : null);
-  })
+  });
   server.start();
 }
 

@@ -1,31 +1,31 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require("path");
+const gulp = require("gulp");
+const conf = require("./conf");
 
-var browserSync = require('browser-sync');
-var browserSyncSpa = require('browser-sync-spa');
+const browserSync = require("browser-sync");
+const browserSyncSpa = require("browser-sync-spa");
 
-var util = require('util');
+const util = require("util");
 
-var proxyMiddleware = require('http-proxy-middleware');
+const proxyMiddleware = require("http-proxy-middleware");
 
-var qrcode = require('qrcode-terminal');
+const qrcode = require("qrcode-terminal");
 
 function browserSyncInit(baseDir, browser) {
   browser = browser === undefined ? 'default' : browser;
 
-  var routes = null;
+  let routes = null;
   if(baseDir === conf.paths.src || (util.isArray(baseDir) && baseDir.indexOf(conf.paths.src) !== -1)) {
     routes = {
       '/bower_components': 'bower_components'
     };
   }
 
-  var server = {
+  const server = {
     baseDir: baseDir,
-    routes: routes
+    routes: routes,
   };
 
   /*

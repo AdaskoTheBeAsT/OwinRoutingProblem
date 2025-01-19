@@ -1,12 +1,12 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require("path");
+const gulp = require("gulp");
+const conf = require("./conf");
 
-var browserSync = require('browser-sync');
+const browserSync = require("browser-sync");
 
-var $ = require('gulp-load-plugins')();
+const $ = require("gulp-load-plugins")();
 
 // Downloads the selenium webdriver
 gulp.task('webdriver-update', $.protractor.webdriver_update);
@@ -14,8 +14,8 @@ gulp.task('webdriver-update', $.protractor.webdriver_update);
 gulp.task('webdriver-standalone', $.protractor.webdriver_standalone);
 
 function runProtractor (done) {
-  var params = process.argv;
-  var args = params.length > 3 ? [params[3], params[4]] : [];
+  const params = process.argv;
+  const args = params.length > 3 ? [params[3], params[4]] : [];
 
   gulp.src(path.join(conf.paths.e2e, '/**/*.js'))
     .pipe($.protractor.protractor({

@@ -21,13 +21,13 @@ export function acmeMalarkey(malarkey: any): angular.IDirective {
 }
 
 function linkFunc(scope: IProjectsScope, el: JQuery, attr: any, vm: MalarkeyController): void {
-  var watcher: () => void;
-  var typist: any = vm.malarkey(el[0], {
+  const watcher: () => void;
+  const typist: any = vm.malarkey(el[0], {
     typeSpeed: 40,
     deleteSpeed: 40,
     pauseDelay: 800,
     loop: true,
-    postfix: ' '
+    postfix: " ",
   });
 
   el.addClass('acme-malarkey');

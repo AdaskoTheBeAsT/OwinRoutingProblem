@@ -1,18 +1,18 @@
 ﻿'use strict';
 
-var gulp = require('gulp');
-var del = require('del');
-var glob = require('glob');
+const gulp = require("gulp");
+const del = require("del");
+const glob = require("glob");
 
-var tsjsfilter = function (file) {
-    return file.replace(/.ts$/, '.js');
+const tsjsfilter = function (file) {
+  return file.replace(/.ts$/, ".js");
 };
 
 gulp.task('cleanvsjs', function () {
 
     return glob('./src/app/**/*.ts', function (err, files) {
 
-        var tsjsfiles = files.map(tsjsfilter);
+        const tsjsfiles = files.map(tsjsfilter);
 
         tsjsfiles.forEach(function(tsjsfile) {
             try {
@@ -25,14 +25,14 @@ gulp.task('cleanvsjs', function () {
 
 });
 
-var tsjsmapfilter = function (file) {
-    return file.replace(/.ts$/, '.js.map');
+const tsjsmapfilter = function (file) {
+  return file.replace(/.ts$/, ".js.map");
 };
 
 gulp.task('cleanvsjsMap', function () {
 
     return glob('./src/app/**/*.ts', function (err, files) {
-        var tsjsmapfiles = files.map(tsjsmapfilter);
+        const tsjsmapfiles = files.map(tsjsmapfilter);
         tsjsmapfiles.forEach(function(tsjsmapfile) {
             try {
                 del.sync(tsjsmapfile);

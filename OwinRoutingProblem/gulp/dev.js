@@ -1,24 +1,27 @@
 ﻿'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require("path");
+const gulp = require("gulp");
+const conf = require("./conf");
 
-var $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
+const $ = require("gulp-load-plugins")({
+  pattern: ["gulp-*", "main-bower-files", "uglify-save-license", "del"],
 });
 
 gulp.task('htmlDev', ['inject', 'partials'], function () {
-    var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'), { read: false });
-    var partialsInjectOptions = {
-        starttag: '<!-- inject:partials -->',
-        ignorePath: path.join(conf.paths.tmp, '/partials'),
-        addRootSlash: false
+    const partialsInjectFile = gulp.src(
+      path.join(conf.paths.tmp, "/partials/templateCacheHtml.js"),
+      { read: false }
+    );
+    const partialsInjectOptions = {
+      starttag: "<!-- inject:partials -->",
+      ignorePath: path.join(conf.paths.tmp, "/partials"),
+      addRootSlash: false,
     };
 
-    var htmlFilter = $.filter('*.html', { restore: true, dot: true });
-    var jsFilter = $.filter('**/*.js', { restore: true, dot: true });
-    var cssFilter = $.filter('**/*.css', { restore: true, dot: true });
+    const htmlFilter = $.filter("*.html", { restore: true, dot: true });
+    const jsFilter = $.filter("**/*.js", { restore: true, dot: true });
+    const cssFilter = $.filter("**/*.css", { restore: true, dot: true });
 
     return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
       .pipe($.inject(partialsInjectFile, partialsInjectOptions))
